@@ -16,12 +16,9 @@ const viewport = ref(null);
 
 
 function renderPlotLZ() {
-      console.log(props.settings.chromosome)
+     
       const id = props.settings.tabix?.id;
       const name = props.settings.tabix?.name;
-
-
-      console.log(props.datasetUrl)
       const chrIn=props.settings.chromosome || 1;
       const startIn=props.settings.start || 10000;
       const endIn=props.settings.end || 1000000;
@@ -38,7 +35,6 @@ function renderPlotLZ() {
         return;
       }
       const gwasParser = LzParsers.makeGWASParser({
-          // 1-based column indices. The values below match the harmonized format output by my.locuszoom.org
           chrom_col: 1,
           pos_col: 2,
           ref_col: 6,
@@ -50,10 +46,8 @@ function renderPlotLZ() {
       });
       const bedParser = LzParsers.makeBed12Parser({normalize: true});
       const ldParser = LzParsers.makePlinkLdParser({normalize: true});
-      const apiBase = "https://portaldev.sph.umich.edu/api/v1/";
       let data_sources = new LocusZoom.DataSources()
           .add("assoc", ["TabixUrlSource", {
-              // Courtesy of https://www.ncbi.nlm.nih.gov/pubmed/25673413  - As harmonized in https://my.locuszoom.org/gwas/236887/
               url_data: props.datasetUrl,
               url_tbi:`${props.root}api/datasets/${id}/display?to_ext=tbi`,
               
