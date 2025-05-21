@@ -165,7 +165,8 @@ watch(
 <template>
   <div
     ref="viewport"
-    class="lz-container-responsive w-full h-[600px] bg-white rounded-md shadow-md"
+    class="lz-container-responsive w-[97%] h-[100%] bg-white rounded-md shadow-md"
     id="lz-plot"
-  ></div>
+  > 
+  </div>
 </template>
