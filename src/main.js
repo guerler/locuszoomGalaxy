@@ -35,12 +35,15 @@ async function main() {
         // Construct the incoming data object with mock configuration and data
         const dataIncoming = {
             visualization_config: {
-                // Placeholder for dataset URL (can be replaced during actual development)
-                dataset_url: "http://localhost:8080/api/datasets/3458175c03423c1c/display?to_ext=bgzip",
                 // Placeholder for dataset ID
-                dataset_id: "3458175c03423c1c",
+                dataset_id: "b620c45fba703209", // id of primary_dataset.bgzip
                 // Placeholder for additional visualization settings
-                settings: {},
+                settings: {
+                    tabix: { id: "e5118a9acb0d1918" }, // id of secondary_dataset.tbi
+                    chromosome: "1",
+                    start: "1",
+                    end: "10000",
+                },
             },
             // Parse and load the visualization XML configuration
             visualization_plugin: await parseXML("locuszoom.xml"),

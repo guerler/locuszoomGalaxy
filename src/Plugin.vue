@@ -48,7 +48,7 @@ function renderPlotLZ() {
       const ldParser = LzParsers.makePlinkLdParser({normalize: true});
       let data_sources = new LocusZoom.DataSources()
           .add("assoc", ["TabixUrlSource", {
-              url_data: props.datasetUrl,
+              url_data: `${props.root}api/datasets/${props.datasetId}/display?to_ext=bgzip`,
               url_tbi:`${props.root}api/datasets/${id}/display?to_ext=tbi`,
               
               parser_func: gwasParser,
