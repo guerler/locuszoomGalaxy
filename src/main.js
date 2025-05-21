@@ -3,8 +3,6 @@ import { GalaxyApi } from "galaxy-charts";
 import App from "./App.vue";
 import "./style.css";
 
-
-
 async function fetchGalaxyVersion() {
     try {
         const { response, data } = await GalaxyApi().GET("/api/version");
@@ -52,7 +50,6 @@ async function main() {
         // Find the root app element and attach the mock data as a JSON string to its data-incoming attribute
         const appElement = document.getElementById(container);
         appElement.dataset.incoming = JSON.stringify(dataIncoming);
-        
     }
 
     /**
