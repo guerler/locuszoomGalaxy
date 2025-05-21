@@ -3,14 +3,6 @@ import { GalaxyApi } from "galaxy-charts";
 import App from "./App.vue";
 import "./style.css";
 
-async function fetchGalaxyVersion() {
-    try {
-        const { response, data } = await GalaxyApi().GET("/api/version");
-        console.log("API Version:", data);
-    } catch (error) {
-        console.error("Error fetching Galaxy version:", error);
-    }
-}
 async function main() {
     /**
      * Identify the target container
@@ -64,5 +56,4 @@ async function main() {
 }
 
 // Start the application
-fetchGalaxyVersion();
 main();

@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from "vue";
+import { onMounted, watch } from "vue";
 
 import "locuszoom/dist/locuszoom.css";
 import LocusZoom from "locuszoom/esm";
@@ -18,7 +18,7 @@ const props = defineProps({
     tracks: Array,
 });
 
-function renderPlotLZ() {
+function render() {
     const id = props.settings.tabix?.id;
     const name = props.settings.tabix?.name;
     const chrIn = props.settings.chromosome || 1;
@@ -135,10 +135,6 @@ function renderPlotLZ() {
     window.plot = plot;
     LzDynamicUrls.plotUpdatesUrl(plot, stateUrlMapping);
     LzDynamicUrls.plotWatchesUrl(plot, stateUrlMapping);
-}
-
-async function render() {
-    renderPlotLZ();
 }
 
 onMounted(() => {

@@ -15,7 +15,7 @@ export default defineConfig({
         exclude: [...configDefaults.exclude, "e2e/*"],
     },
     define: {
-        nowrap: false,
+        nowrap: null,
         mode: null,
         ...viteConfigCharts.define,
     },
