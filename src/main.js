@@ -1,5 +1,4 @@
 import { createApp, h } from "vue";
-import { GalaxyApi } from "galaxy-charts";
 import App from "./App.vue";
 import "./style.css";
 
