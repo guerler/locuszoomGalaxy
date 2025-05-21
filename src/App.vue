@@ -15,7 +15,7 @@ defineProps<{
             <Plugin
                 :dataset-id="datasetId"
                 :dataset-url="datasetUrl"
-                :root="root"
+                root="http://localhost:8080/"
                 :settings="settings"
                 :specs="specs"
                 :tracks="tracks" />

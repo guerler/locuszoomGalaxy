@@ -16,17 +16,27 @@ const viewport = ref(null);
 
 
 function renderPlotLZ() {
-      console.log('Tabix Proxy:', props.settings.tabix);
-        console.log('Tabix Target:', props.settings.tabix?.['<target>']);
-                const id = props.settings.tabix?.id;
-const name = props.settings.tabix?.name;
+      console.log(props.settings.chromosome)
+      const id = props.settings.tabix?.id;
+      const name = props.settings.tabix?.name;
 
-console.log("ID:", id);
-console.log("Name:", name);
+
       console.log(props.datasetUrl)
-      const chrIn=1;
-      const startIn=10000;
-      const endIn=1000000;
+      const chrIn=props.settings.chromosome || 1;
+      const startIn=props.settings.start || 10000;
+      const endIn=props.settings.end || 1000000;
+      if (endIn - startIn > 10000000){
+        alert("We cannot output more than 10Mb at a time!");
+        props.settings.start = 10000;
+        props.settings.end = 1000000;
+        return;
+      }
+      if (endIn <= startIn){
+        alert("Invalid input: end position must be bigger than start position");
+         props.settings.start = 10000;
+        props.settings.end = 1000000;
+        return;
+      }
       const gwasParser = LzParsers.makeGWASParser({
           // 1-based column indices. The values below match the harmonized format output by my.locuszoom.org
           chrom_col: 1,
@@ -45,7 +55,7 @@ console.log("Name:", name);
           .add("assoc", ["TabixUrlSource", {
               // Courtesy of https://www.ncbi.nlm.nih.gov/pubmed/25673413  - As harmonized in https://my.locuszoom.org/gwas/236887/
               url_data: props.datasetUrl,
-              url_tbi:`http://localhost:8080/api/datasets/${id}/display?to_ext=tbi`,
+              url_tbi:`${props.root}api/datasets/${id}/display?to_ext=tbi`,
               
               parser_func: gwasParser,
               overfetch: 0,

@@ -22,27 +22,28 @@
     <type>data</type>
     <extension>tabix</extension>
 </input>
+  <input>
+        <label>Select a Chromosome</label>
+        <name>chromosome</name>
+        <type>text</type>
+    </input>
+    <input>
+        <label>Select start position</label>
+        <name>start</name>
+        <type>text</type>
+    </input>
+      <input>
+        <label>Select end position</label>
+        <name>end</name>
+        <type>text</type>
+    </input>
       
     
    
 </settings>
 <tracks>
    
-  <input>
-        <label>Setting: Chromosome</label>
-        <name>setting_chromosome</name>
-        <type>text</type>
-    </input>
-    <input>
-        <label>Setting: Start position</label>
-        <name>setting_start</name>
-        <type>text</type>
-    </input>
-      <input>
-        <label>Setting: End position</label>
-        <name>setting_end</name>
-        <type>text</type>
-    </input>
+
 </tracks>
     <requirements>
         <requirement type="npm" version="MY_NPM_PACKAGE_VERSION" package="MY_NPM_PACKAGE_NAME"/>
