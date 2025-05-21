@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch, toRaw } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 import "locuszoom/dist/locuszoom.css";
 import LocusZoom from "locuszoom/esm";
@@ -17,8 +17,6 @@ const props = defineProps({
     specs: Object,
     tracks: Array,
 });
-
-const viewport = ref(null);
 
 function renderPlotLZ() {
     const id = props.settings.tabix?.id;
@@ -122,13 +120,9 @@ function renderPlotLZ() {
             closable: true,
             show: { or: ["highlighted", "selected"] },
             hide: { and: ["unhighlighted", "unselected"] },
-            html:
-                "<strong>" +
-                "phen" +
-                "</strong><br>" +
-                "<strong>{{assoc:variant|htmlescape}}</strong><br>" +
-                "P Value: <strong>{{assoc:log_pvalue|logtoscinotation|htmlescape}}</strong><br>" +
-                "Ref. Allele: <strong>{{assoc:ref_allele|htmlescape}}</strong><br>",
+            html: `<strong>phen</strong><br><strong>{{assoc:variant|htmlescape}}</strong><br>
+                P Value: <strong>{{assoc:log_pvalue|logtoscinotation|htmlescape}}</strong><br>
+                Ref. Allele: <strong>{{assoc:ref_allele|htmlescape}}</strong><br>`,
         },
     };
 
@@ -161,8 +155,5 @@ watch(
 </script>
 
 <template>
-    <div
-        ref="viewport"
-        class="lz-container-responsive w-[97%] h-[100%] bg-white rounded-md shadow-md"
-        id="lz-plot"></div>
+    <div id="lz-plot" class="h-100"></div>
 </template>

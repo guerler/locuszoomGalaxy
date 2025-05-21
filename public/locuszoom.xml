@@ -14,39 +14,33 @@
         <param type="dataset" var_name_in_template="hda" required="true">dataset_id</param>
     </params>
     <settings>
-   
-    <input>
-    <label>Add tabix file for your primary dataset</label>
-    <help>Can be created with tabix</help>
-    <name>tabix</name>
-    <type>data</type>
-    <extension>tabix</extension>
-</input>
-  <input>
-        <label>Select a Chromosome</label>
-        <name>chromosome</name>
-        <type>integer</type>
-    </input>
-    <input>
-        <label>Select start position</label>
-        <name>start</name>
-        <type>integer</type>
-    </input>
-      <input>
-        <label>Select end position</label>
-        <name>end</name>
-        <type>integer</type>
-    </input>
-      
-    
-   
-</settings>
-<tracks>
-   
-
-</tracks>
+        <input>
+            <label>Add tabix file for your primary dataset</label>
+            <help>Can be created with tabix</help>
+            <name>tabix</name>
+            <type>data</type>
+        </input>
+        <input>
+            <label>Select a Chromosome</label>
+            <name>chromosome</name>
+            <type>integer</type>
+            <min>1</min>
+        </input>
+        <input>
+            <label>Select start position</label>
+            <name>start</name>
+            <type>integer</type>
+            <min>1</min>
+        </input>
+        <input>
+            <label>Select end position</label>
+            <name>end</name>
+            <type>integer</type>
+            <min>1</min>
+        </input>
+    </settings>
     <requirements>
         <requirement type="npm" version="MY_NPM_PACKAGE_VERSION" package="MY_NPM_PACKAGE_NAME"/>
     </requirements>
-    <entry_point entry_point_type="script" src="/index.html" css="src/style.css" />
+    <entry_point entry_point_type="script" src="dist/index.js" css="dist/index.css" />
 </visualization>
