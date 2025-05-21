@@ -40,9 +40,9 @@ async function main() {
                 // Placeholder for additional visualization settings
                 settings: {
                     tabix: { id: "e5118a9acb0d1918" }, // id of secondary_dataset.tbi
-                    chromosome: "1",
-                    start: "1",
-                    end: "10000",
+                    chromosome: 1,
+                    start: 1000,
+                    end: 1000000,
                 },
             },
             // Parse and load the visualization XML configuration

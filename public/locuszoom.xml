@@ -25,17 +25,17 @@
   <input>
         <label>Select a Chromosome</label>
         <name>chromosome</name>
-        <type>text</type>
+        <type>integer</type>
     </input>
     <input>
         <label>Select start position</label>
         <name>start</name>
-        <type>text</type>
+        <type>integer</type>
     </input>
       <input>
         <label>Select end position</label>
         <name>end</name>
-        <type>text</type>
+        <type>integer</type>
     </input>
       
     
