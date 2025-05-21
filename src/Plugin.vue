@@ -1,6 +1,13 @@
 <script setup>
 import { onMounted, ref, watch , toRaw } from "vue";
 
+import "locuszoom/dist/locuszoom.css"
+import LocusZoom from 'locuszoom/esm';
+import LzTabixSource from 'locuszoom/esm/ext/lz-tabix-source';
+import LzParsers from 'locuszoom/esm/ext/lz-parsers';
+import LzDynamicUrls from 'locuszoom/esm/ext/lz-dynamic-urls';
+
+LocusZoom.use(LzTabixSource);
 
 const props = defineProps({
   datasetId: String,

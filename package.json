@@ -24,6 +24,7 @@
         "galaxy-charts": "^0.0.70",
         "galaxy-charts-xml-parser": "^1.0.3",
         "jsdom": "^25.0.1",
+        "locuszoom": "^0.14.0",
         "postcss": "^8.4.40",
         "prettier": "^3.3.3",
         "tailwindcss": "^3.4.7",

@@ -39,7 +39,7 @@ async function main() {
                 dataset_id: "b620c45fba703209", // id of primary_dataset.bgzip
                 // Placeholder for additional visualization settings
                 settings: {
-                    tabix: { id: "e5118a9acb0d1918" }, // id of secondary_dataset.tbi
+                    tabix: { id: "abd164196b68b912" }, // id of secondary_dataset.tbi
                     chromosome: 1,
                     start: 1000,
                     end: 1000000,
