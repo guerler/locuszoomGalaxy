@@ -36,9 +36,9 @@ async function main() {
         const dataIncoming = {
             visualization_config: {
                 // Placeholder for dataset URL (can be replaced during actual development)
-                dataset_url: "ss",
+                dataset_url: "http://localhost:8080/api/datasets/3458175c03423c1c/display?to_ext=bgzip",
                 // Placeholder for dataset ID
-                dataset_id: "ss",
+                dataset_id: "3458175c03423c1c",
                 // Placeholder for additional visualization settings
                 settings: {},
             },
