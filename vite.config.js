@@ -14,4 +14,9 @@ export default defineConfig({
         environment: "jsdom",
         exclude: [...configDefaults.exclude, "e2e/*"],
     },
+    define: {
+        nowrap: null,
+        mode: null,
+        ...viteConfigCharts.define,
+    },
 });

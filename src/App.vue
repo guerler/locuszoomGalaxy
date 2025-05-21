@@ -15,12 +15,10 @@ defineProps<{
             <Plugin
                 :dataset-id="datasetId"
                 :dataset-url="datasetUrl"
-                root="http://localhost:8080/"
+                :root="root"
                 :settings="settings"
                 :specs="specs"
                 :tracks="tracks" />
-                
         </template>
     </GalaxyCharts>
-    
 </template>
