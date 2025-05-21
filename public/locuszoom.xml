@@ -20,7 +20,7 @@
             <extension>bgzip</extension>
         </input>
         <input>
-            <label>Select a Chromosome</label>
+            <label>Select a chromosome</label>
             <name>chromosome</name>
             <type>integer</type>
             <min>1</min>
