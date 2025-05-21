@@ -132,7 +132,6 @@ function render() {
     layout2.panels[0].data_layers.push(layer_layout);
 
     let plot = LocusZoom.populate("#lz-plot", data_sources, layout2);
-    window.plot = plot;
     LzDynamicUrls.plotUpdatesUrl(plot, stateUrlMapping);
     LzDynamicUrls.plotWatchesUrl(plot, stateUrlMapping);
 }
