@@ -25,14 +25,9 @@ async function main() {
         const dataIncoming = {
             visualization_config: {
                 // Placeholder for dataset ID
-                dataset_id: "b620c45fba703209", // id of primary_dataset.bgzip
+                dataset_id: "3458175c03423c1c", // id of primary_dataset.bgzip
                 // Placeholder for additional visualization settings
-                settings: {
-                    tabix: { id: "abd164196b68b912" }, // id of secondary_dataset.tbi
-                    chromosome: 1,
-                    start: 1000,
-                    end: 1000000,
-                },
+                settings: {},
             },
             // Parse and load the visualization XML configuration
             visualization_plugin: await parseXML("locuszoom.xml"),

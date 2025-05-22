@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, watch } from "vue";
+import { onMounted, watch, ref } from "vue";
 
 import "locuszoom/dist/locuszoom.css";
 import LocusZoom from "locuszoom/esm";
@@ -17,25 +17,22 @@ const props = defineProps({
     specs: Object,
     tracks: Array,
 });
-
+const errorMessage = ref("");
 function render() {
     const id = props.settings.tabix?.id;
     const name = props.settings.tabix?.name;
-    const chrIn = props.settings.chromosome || 1;
-    const startIn = props.settings.start || 10000;
-    const endIn = props.settings.end || 1000000;
+    const chrIn = props.settings.chromosome;
+    const startIn = props.settings.start;
+    const endIn = props.settings.end;
     if (endIn - startIn > 10000000) {
-        alert("We cannot output more than 10Mb at a time!");
-        props.settings.start = 10000;
-        props.settings.end = 1000000;
+        errorMessage.value = "We cannot output more than 10Mb at a time!";
         return;
     }
     if (endIn <= startIn) {
-        alert("Invalid input: end position must be bigger than start position");
-        props.settings.start = 10000;
-        props.settings.end = 1000000;
+        errorMessage.value = "Invalid input: End position must be bigger than start position!";
         return;
     }
+    errorMessage.value=""
     const gwasParser = LzParsers.makeGWASParser({
         chrom_col: 1,
         pos_col: 2,
@@ -151,4 +148,18 @@ watch(
 
 <template>
     <div id="lz-plot" class="h-100"></div>
+    <div class="error-message" v-if="errorMessage" style="color: red; margin-top: 10px">{{ errorMessage }}</div>
 </template>
+<style scoped>
+.error-message {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: 1px solid #f44336;
+    background-color: #fdecea;
+    color: #b71c1c;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+</style>
