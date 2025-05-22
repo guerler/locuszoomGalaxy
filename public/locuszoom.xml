@@ -40,6 +40,55 @@
             <min>1</min>
             <value>999999</value>
         </input>
+        <input>
+            <label>Column for chromosomes</label>
+            <name>chr</name>
+            <type>integer</type>
+            <value>1</value>
+        </input>
+        <input>
+            <label>Column for positions</label>
+            <name>pos</name>
+            <type>integer</type>
+            <value>2</value>
+        </input>
+        <input>
+            <label>Column for reference allele</label>
+            <name>ref</name>
+            <type>integer</type>
+            <value>6</value>
+        </input>
+        <input>
+            <label>Column for alternative allele</label>
+            <name>alt</name>
+            <type>integer</type>
+            <value>7</value>
+        </input>
+        <input>
+            <label>Column for p-values</label>
+            <name>pval</name>
+            <type>integer</type>
+            <value>13</value>
+        </input>
+         <input>
+            <label>Are the p-values in -log_10?</label>
+            <name>isNeg</name>
+            <type>boolean</type>
+            <value>false</value>
+        </input>
+        <input>
+            <label>Column for Beta</label>
+            <name>beta</name>
+            <type>integer</type>
+            <value>9</value>
+        </input>
+        <input>
+            <label>Column for standard error of beta</label>
+            <name>betaErr</name>
+            <type>integer</type>
+            <value>10</value>
+        </input>
+
     </settings>
     <requirements>
         <requirement type="npm" version="MY_NPM_PACKAGE_VERSION" package="MY_NPM_PACKAGE_NAME"/>

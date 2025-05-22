@@ -24,6 +24,15 @@ function render() {
     const chrIn = props.settings.chromosome;
     const startIn = props.settings.start;
     const endIn = props.settings.end;
+    const chr = props.settings.chr;
+    const pos = props.settings.pos;
+    const ref = props.settings.ref;
+    const alt = props.settings.alt;
+    const pval = props.settings.pval;
+    const isNeg = props.settings.isNeg;
+    const beta = props.settings.beta;
+    const betaErr = props.settings.betaErr;
+
     if (endIn - startIn > 10000000) {
         errorMessage.value = "We cannot output more than 10Mb at a time!";
         return;
@@ -34,14 +43,14 @@ function render() {
     }
     errorMessage.value=""
     const gwasParser = LzParsers.makeGWASParser({
-        chrom_col: 1,
-        pos_col: 2,
-        ref_col: 6,
-        alt_col: 8,
-        pvalue_col: 13,
-        is_neg_log_pvalue: false,
-        beta_col: 9,
-        stderr_beta_col: 10,
+        chrom_col: chr,
+        pos_col: pos,
+        ref_col: ref,
+        alt_col: alt,
+        pvalue_col: pval,
+        is_neg_log_pvalue: isNeg,
+        beta_col: beta,
+        stderr_beta_col: betaErr,
     });
     const bedParser = LzParsers.makeBed12Parser({ normalize: true });
     const ldParser = LzParsers.makePlinkLdParser({ normalize: true });
