@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted, watch, ref } from "vue";
-
 import "locuszoom/dist/locuszoom.css";
 import LocusZoom from "locuszoom/esm";
 import LzTabixSource from "locuszoom/esm/ext/lz-tabix-source";
@@ -32,7 +31,6 @@ function render() {
     const isNeg = props.settings.isNeg;
     const beta = props.settings.beta;
     const betaErr = props.settings.betaErr;
-
     if (endIn - startIn > 10000000) {
         errorMessage.value = "We cannot output more than 10Mb at a time!";
         return;
@@ -41,7 +39,7 @@ function render() {
         errorMessage.value = "Invalid input: End position must be bigger than start position!";
         return;
     }
-    errorMessage.value=""
+    errorMessage.value = "";
     const gwasParser = LzParsers.makeGWASParser({
         chrom_col: chr,
         pos_col: pos,
@@ -64,21 +62,6 @@ function render() {
             overfetch: 0,
         },
     ]);
-
-    /*
-          .add("ld", ["UserTabixLD", {
-              // Fetch an LD file with just 3 possible refvars. More limited than an LD server, but able to use LD from a custom population.
-              url_data:  data[2],
-              url_tbi: data[3],
-              parser_func: ldParser,
-          }])
-          .add("recomb", ["RecombLZ", { url: apiBase + "annotation/recomb/results/", build: 'GRCh37' }])*/
-    /*
-          .add("gene", ["GeneLZ", { url: apiBase + "annotation/genes/", build: 'GRCh37' }])
-          
-          .add("constraint", ["GeneConstraintLZ", { url: "https://gnomad.broadinstitute.org/api/", build: 'GRCh37' }]);
-          */
-
     let stateUrlMapping = { chr: "chrom", start: "start", end: "end", ldrefvar: "ld_variant" };
     // Fetch initial position from the URL, or use some defaults
     let initialState = LzDynamicUrls.paramsFromUrl(stateUrlMapping);
@@ -87,29 +70,15 @@ function render() {
     } else {
         initialState = { chr: chrIn, start: startIn, end: endIn };
     }
-
-    /* const layout = LocusZoom.Layouts.get("plot", "standard_association", {
-          state: initialState,
-          panels: [
-              LocusZoom.Layouts.get('panel', 'association', { title: { text: "GIANT BMI meta-analysis (women only)" }}),
-              LocusZoom.Layouts.get('panel', 'bed_intervals', {title: { text: "Accessible chromatin (ChIP - Pancreatic Islets)" }}),
-              LocusZoom.Layouts.get('panel', 'genes'),
-          ],
-      });*/
-
     let association_panel_mods = {
         data_layers: [LocusZoom.Layouts.get("data_layer", "significance", { name: "Line of GWAS Significance" })],
         toolbar: LocusZoom.Layouts.get("panel", "association")["toolbar"],
     };
-
     let layout2 = {
         state: initialState,
         width: 800,
         responsive_resize: true,
-        panels: [
-            LocusZoom.Layouts.get("panel", "association", association_panel_mods),
-            //LocusZoom.Layouts.get("panel", "genes", { namespace: { "gene": "gene" } })
-        ],
+        panels: [LocusZoom.Layouts.get("panel", "association", association_panel_mods)],
         toolbar: LocusZoom.Layouts.get("toolbar", "standard_plot"),
     };
 
@@ -131,12 +100,10 @@ function render() {
                 Ref. Allele: <strong>{{assoc:ref_allele|htmlescape}}</strong><br>`,
         },
     };
-
     const layer_layout = LocusZoom.Layouts.get("data_layer", "association_pvalues", association_data_layer_mods);
     layer_layout.namespace = { assoc: "assoc" };
     layer_layout.data_operations = [];
     layout2.panels[0].data_layers.push(layer_layout);
-
     let plot = LocusZoom.populate("#lz-plot", data_sources, layout2);
     LzDynamicUrls.plotUpdatesUrl(plot, stateUrlMapping);
     LzDynamicUrls.plotWatchesUrl(plot, stateUrlMapping);
