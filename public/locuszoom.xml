@@ -24,18 +24,21 @@
             <name>chromosome</name>
             <type>integer</type>
             <min>1</min>
+            <value>1</value>
         </input>
         <input>
             <label>Select start position</label>
             <name>start</name>
             <type>integer</type>
             <min>1</min>
+            <value>1</value>
         </input>
         <input>
             <label>Select end position</label>
             <name>end</name>
             <type>integer</type>
             <min>1</min>
+            <value>999999</value>
         </input>
     </settings>
     <requirements>
